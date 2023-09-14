@@ -1,7 +1,6 @@
 #include<stdio.h>
 int main(){
     int a,b,i,t,n;
-
     a=0;
     b=1;
     i=1;

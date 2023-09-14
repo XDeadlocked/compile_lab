@@ -1,0 +1,1101 @@
+
+;; Function main (null)
+;; enabled by -tree-original
+
+
+{
+  int a;
+  int b;
+  int i;
+  int t;
+  int n;
+
+    int a;
+    int b;
+    int i;
+    int t;
+    int n;
+  a = 0;
+  b = 1;
+  i = 1;
+  scanf ((const char * restrict) "%d", &n);
+  printf ((const char * restrict) "%d\n%d", a, b);
+  goto <D.2352>;
+  <D.2353>:;
+  t = b;
+  b = a + b;
+  printf ((const char * restrict) "%d\n", b);
+  a = t;
+  i = i + 1;
+  <D.2352>:;
+  if (i < n) goto <D.2353>; else goto <D.2351>;
+  <D.2351>:;
+}
+return 0;
+int main ()
+{
+  int D.2355;
+
+  {
+    int a;
+    int b;
+    int i;
+    int t;
+    int n;
+
+    try
+      {
+        a = 0;
+        b = 1;
+        i = 1;
+        scanf ("%d", &n);
+        printf ("%d\n%d", a, b);
+        goto <D.2352>;
+        <D.2353>:
+        t = b;
+        b = a + b;
+        printf ("%d\n", b);
+        a = t;
+        i = i + 1;
+        <D.2352>:
+        n.0_1 = n;
+        if (i < n.0_1) goto <D.2353>; else goto <D.2351>;
+        <D.2351>:
+      }
+    finally
+      {
+        n = {CLOBBER};
+      }
+  }
+  D.2355 = 0;
+  return D.2355;
+}
+
+
+
+;; Function main (main, funcdef_no=0, decl_uid=2344, cgraph_uid=1, symbol_order=0)
+
+int main ()
+{
+  int D.2355;
+
+  {
+    int a;
+    int b;
+    int i;
+    int t;
+    int n;
+
+    try
+      {
+        a = 0;
+        b = 1;
+        i = 1;
+        scanf ("%d", &n);
+        printf ("%d\n%d", a, b);
+        goto <D.2352>;
+        <D.2353>:
+        t = b;
+        b = a + b;
+        printf ("%d\n", b);
+        a = t;
+        i = i + 1;
+        <D.2352>:
+        n.0_1 = n;
+        if (i < n.0_1) goto <D.2353>; else goto <D.2351>;
+        <D.2351>:
+      }
+    finally
+      {
+        n = {CLOBBER};
+      }
+  }
+  D.2355 = 0;
+  return D.2355;
+}
+
+
+
+;; Function main (main, funcdef_no=0, decl_uid=2344, cgraph_uid=1, symbol_order=0)
+
+int main ()
+{
+  int n;
+  int t;
+  int i;
+  int b;
+  int a;
+  int D.2355;
+
+  try
+    {
+      a = 0;
+      b = 1;
+      i = 1;
+      scanf ("%d", &n);
+      printf ("%d\n%d", a, b);
+      goto <D.2352>;
+      <D.2353>:
+      t = b;
+      b = a + b;
+      printf ("%d\n", b);
+      a = t;
+      i = i + 1;
+      <D.2352>:
+      n.0_1 = n;
+      if (i < n.0_1) goto <D.2353>; else goto <D.2351>;
+      <D.2351>:
+    }
+  finally
+    {
+      n = {CLOBBER};
+    }
+  D.2355 = 0;
+  goto <D.2356>;
+  <D.2356>:
+  return D.2355;
+}
+
+
+
+;; Function main (main, funcdef_no=0, decl_uid=2344, cgraph_uid=1, symbol_order=0)
+
+int main ()
+{
+  int n;
+  int t;
+  int i;
+  int b;
+  int a;
+  int D.2355;
+
+  a = 0;
+  b = 1;
+  i = 1;
+  scanf ("%d", &n);
+  printf ("%d\n%d", a, b);
+  goto <D.2352>;
+  <D.2353>:
+  t = b;
+  b = a + b;
+  printf ("%d\n", b);
+  a = t;
+  i = i + 1;
+  <D.2352>:
+  n.0_1 = n;
+  if (i < n.0_1) goto <D.2353>; else goto <D.2351>;
+  <D.2351>:
+  n = {CLOBBER};
+  D.2355 = 0;
+  goto <D.2356>;
+  <D.2356>:
+  return D.2355;
+}
+
+
+
+;; Function main (main, funcdef_no=0, decl_uid=2344, cgraph_uid=1, symbol_order=0)
+
+;; 2 loops found
+;;
+;; Loop 0
+;;  header 0, latch 1
+;;  depth 0, outer -1
+;;  nodes: 0 1 2 3 4 5 6
+;;
+;; Loop 1
+;;  header 4, latch 3
+;;  depth 1, outer 0
+;;  nodes: 4 3
+;; 2 succs { 4 }
+;; 3 succs { 4 }
+;; 4 succs { 3 5 }
+;; 5 succs { 6 }
+;; 6 succs { 1 }
+int main ()
+{
+  int n;
+  int t;
+  int i;
+  int b;
+  int a;
+  int D.2355;
+
+  <bb 2> :
+  a = 0;
+  b = 1;
+  i = 1;
+  scanf ("%d", &n);
+  printf ("%d\n%d", a, b);
+  goto <bb 4>; [INV]
+
+  <bb 3> :
+  t = b;
+  b = a + b;
+  printf ("%d\n", b);
+  a = t;
+  i = i + 1;
+
+  <bb 4> :
+  n.0_1 = n;
+  if (i < n.0_1)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 5>; [INV]
+
+  <bb 5> :
+  n = {CLOBBER};
+  D.2355 = 0;
+
+  <bb 6> :
+<L3>:
+  return D.2355;
+
+}
+
+
+
+;; Function main (main, funcdef_no=0, decl_uid=2344, cgraph_uid=1, symbol_order=0)
+
+int main ()
+{
+  int n;
+  int t;
+  int i;
+  int b;
+  int a;
+  int D.2355;
+
+  <bb 2> :
+  a = 0;
+  b = 1;
+  i = 1;
+  scanf ("%d", &n);
+  printf ("%d\n%d", a, b);
+  goto <bb 4>; [INV]
+
+  <bb 3> :
+  t = b;
+  b = a + b;
+  printf ("%d\n", b);
+  a = t;
+  i = i + 1;
+
+  <bb 4> :
+  n.0_1 = n;
+  if (i < n.0_1)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 5>; [INV]
+
+  <bb 5> :
+  n = {CLOBBER};
+  D.2355 = 0;
+
+  <bb 6> :
+<L3>:
+  return D.2355;
+
+}
+
+
+
+;; Function main (main, funcdef_no=0, decl_uid=2344, cgraph_uid=1, symbol_order=0)
+
+main.c:8: printf: objsize = 9223372036854775807, fmtstr = "%d
+%d"
+  Directive 1 at offset 0: "%d"
+    Result: 1, 1, 11, 11 (1, 1, 11, 11)
+  Directive 2 at offset 2: "
+", length = 1
+    Result: 1, 1, 1, 1 (2, 2, 12, 12)
+  Directive 3 at offset 3: "%d"
+    Result: 1, 1, 11, 11 (3, 3, 23, 23)
+  Directive 4 at offset 5: "", length = 1
+main.c:12: printf: objsize = 9223372036854775807, fmtstr = "%d
+"
+  Directive 1 at offset 0: "%d"
+    Result: 1, 1, 11, 11 (1, 1, 11, 11)
+  Directive 2 at offset 2: "
+", length = 1
+    Result: 1, 1, 1, 1 (2, 2, 12, 12)
+  Directive 3 at offset 3: "", length = 1
+int main ()
+{
+  int n;
+  int t;
+  int i;
+  int b;
+  int a;
+  int D.2355;
+
+  <bb 2> :
+  a = 0;
+  b = 1;
+  i = 1;
+  scanf ("%d", &n);
+  printf ("%d\n%d", a, b);
+  goto <bb 4>; [INV]
+
+  <bb 3> :
+  t = b;
+  b = a + b;
+  printf ("%d\n", b);
+  a = t;
+  i = i + 1;
+
+  <bb 4> :
+  n.0_1 = n;
+  if (i < n.0_1)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 5>; [INV]
+
+  <bb 5> :
+  n = {CLOBBER};
+  D.2355 = 0;
+
+  <bb 6> :
+<L3>:
+  return D.2355;
+
+}
+
+
+
+;; Function main (main, funcdef_no=0, decl_uid=2344, cgraph_uid=1, symbol_order=0)
+
+int main ()
+{
+  int n;
+  int t;
+  int i;
+  int b;
+  int a;
+  int D.2355;
+
+  <bb 2> :
+  a = 0;
+  b = 1;
+  i = 1;
+  scanf ("%d", &n);
+  printf ("%d\n%d", a, b);
+  goto <bb 4>; [INV]
+
+  <bb 3> :
+  t = b;
+  b = a + b;
+  printf ("%d\n", b);
+  a = t;
+  i = i + 1;
+
+  <bb 4> :
+  n.0_1 = n;
+  if (i < n.0_1)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 5>; [INV]
+
+  <bb 5> :
+  n = {CLOBBER};
+  D.2355 = 0;
+
+  <bb 6> :
+<L3>:
+  return D.2355;
+
+}
+
+
+
+;; Function main (main, funcdef_no=0, decl_uid=2344, cgraph_uid=1, symbol_order=0)
+
+int main ()
+{
+  int n;
+  int t;
+  int i;
+  int b;
+  int a;
+  int D.2355;
+  int n.0_1;
+  int _13;
+
+  <bb 2> :
+  a_6 = 0;
+  b_7 = 1;
+  i_8 = 1;
+  scanf ("%d", &n);
+  printf ("%d\n%d", a_6, b_7);
+  goto <bb 4>; [INV]
+
+  <bb 3> :
+  t_14 = b_3;
+  b_15 = a_2 + b_3;
+  printf ("%d\n", b_15);
+  a_17 = t_14;
+  i_18 = i_4 + 1;
+
+  <bb 4> :
+  # a_2 = PHI <a_6(2), a_17(3)>
+  # b_3 = PHI <b_7(2), b_15(3)>
+  # i_4 = PHI <i_8(2), i_18(3)>
+  n.0_1 = n;
+  if (i_4 < n.0_1)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 5>; [INV]
+
+  <bb 5> :
+  n ={v} {CLOBBER};
+  _13 = 0;
+
+  <bb 6> :
+<L3>:
+  return _13;
+
+}
+
+
+
+;; Function main (main, funcdef_no=0, decl_uid=2344, cgraph_uid=1, symbol_order=0)
+
+int main ()
+{
+  int n;
+  int t;
+  int i;
+  int b;
+  int a;
+  int D.2355;
+  int n.0_1;
+  int _13;
+
+  <bb 2> :
+  a_6 = 0;
+  b_7 = 1;
+  i_8 = 1;
+  scanf ("%d", &n);
+  printf ("%d\n%d", a_6, b_7);
+  goto <bb 4>; [INV]
+
+  <bb 3> :
+  t_14 = b_3;
+  b_15 = a_2 + b_3;
+  printf ("%d\n", b_15);
+  a_17 = t_14;
+  i_18 = i_4 + 1;
+
+  <bb 4> :
+  # a_2 = PHI <a_6(2), a_17(3)>
+  # b_3 = PHI <b_7(2), b_15(3)>
+  # i_4 = PHI <i_8(2), i_18(3)>
+  n.0_1 = n;
+  if (i_4 < n.0_1)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 5>; [INV]
+
+  <bb 5> :
+  n ={v} {CLOBBER};
+  _13 = 0;
+
+  <bb 6> :
+<L3>:
+  return _13;
+
+}
+
+
+
+;; Function main (main, funcdef_no=0, decl_uid=2344, cgraph_uid=1, symbol_order=0)
+
+
+Analyzing function body size: main/0
+
+IPA function summary for main/0
+  global time:     44.000000
+  self size:       18
+  global size:     0
+  min size:       0
+  self stack:      0
+  global stack:    0
+    size:6.000000, time:7.000000
+    size:2.000000, time:0.000000,  executed if:(not inlined)
+  calls:
+    printf/2 function body not available
+      freq:1.00 loop depth: 1 size: 3 time: 12
+    printf/2 function body not available
+      freq:1.00 loop depth: 0 size: 4 time: 13
+    scanf/1 function body not available
+      freq:1.00 loop depth: 0 size: 3 time: 12
+
+int main ()
+{
+  int n;
+  int t;
+  int i;
+  int b;
+  int a;
+  int D.2355;
+  int n.0_1;
+  int _13;
+
+  <bb 2> :
+  a_6 = 0;
+  b_7 = 1;
+  i_8 = 1;
+  scanf ("%d", &n);
+  printf ("%d\n%d", a_6, b_7);
+  goto <bb 4>; [INV]
+
+  <bb 3> :
+  t_14 = b_3;
+  b_15 = a_2 + b_3;
+  printf ("%d\n", b_15);
+  a_17 = t_14;
+  i_18 = i_4 + 1;
+
+  <bb 4> :
+  # a_2 = PHI <a_6(2), a_17(3)>
+  # b_3 = PHI <b_7(2), b_15(3)>
+  # i_4 = PHI <i_8(2), i_18(3)>
+  n.0_1 = n;
+  if (i_4 < n.0_1)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 5>; [INV]
+
+  <bb 5> :
+  n ={v} {CLOBBER};
+  _13 = 0;
+
+  <bb 6> :
+<L3>:
+  return _13;
+
+}
+
+
+
+;; Function main (main, funcdef_no=0, decl_uid=2344, cgraph_uid=1, symbol_order=0)
+
+int main ()
+{
+  int n;
+  int t;
+  int i;
+  int b;
+  int a;
+  int D.2355;
+  int n.0_1;
+  int _13;
+
+  <bb 2> :
+  a_6 = 0;
+  b_7 = 1;
+  i_8 = 1;
+  scanf ("%d", &n);
+  printf ("%d\n%d", a_6, b_7);
+  goto <bb 4>; [INV]
+
+  <bb 3> :
+  t_14 = b_3;
+  b_15 = a_2 + b_3;
+  printf ("%d\n", b_15);
+  a_17 = t_14;
+  i_18 = i_4 + 1;
+
+  <bb 4> :
+  # a_2 = PHI <a_6(2), a_17(3)>
+  # b_3 = PHI <b_7(2), b_15(3)>
+  # i_4 = PHI <i_8(2), i_18(3)>
+  n.0_1 = n;
+  if (i_4 < n.0_1)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 5>; [INV]
+
+  <bb 5> :
+  n ={v} {CLOBBER};
+  _13 = 0;
+
+  <bb 6> :
+<L3>:
+  return _13;
+
+}
+
+
+
+;; Function main (main, funcdef_no=0, decl_uid=2344, cgraph_uid=1, symbol_order=0)
+
+Released 0 names, 0.00%, removed 0 holes
+int main ()
+{
+  int n;
+  int t;
+  int i;
+  int b;
+  int a;
+  int D.2355;
+  int n.0_1;
+  int _13;
+
+  <bb 2> :
+  a_6 = 0;
+  b_7 = 1;
+  i_8 = 1;
+  scanf ("%d", &n);
+  printf ("%d\n%d", a_6, b_7);
+  goto <bb 4>; [INV]
+
+  <bb 3> :
+  t_14 = b_3;
+  b_15 = a_2 + b_3;
+  printf ("%d\n", b_15);
+  a_17 = t_14;
+  i_18 = i_4 + 1;
+
+  <bb 4> :
+  # a_2 = PHI <a_6(2), a_17(3)>
+  # b_3 = PHI <b_7(2), b_15(3)>
+  # i_4 = PHI <i_8(2), i_18(3)>
+  n.0_1 = n;
+  if (i_4 < n.0_1)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 5>; [INV]
+
+  <bb 5> :
+  n ={v} {CLOBBER};
+  _13 = 0;
+
+  <bb 6> :
+<L3>:
+  return _13;
+
+}
+
+
+
+;; Function main (main, funcdef_no=0, decl_uid=2344, cgraph_uid=1, symbol_order=0)
+
+
+Analyzing function body size: main/0
+
+IPA function summary for main/0
+  global time:     44.000000
+  self size:       18
+  global size:     18
+  min size:       0
+  self stack:      0
+  global stack:    0
+    size:6.000000, time:7.000000
+    size:2.000000, time:0.000000,  executed if:(not inlined)
+  calls:
+    printf/2 function body not available
+      freq:1.00 loop depth: 1 size: 3 time: 12
+    printf/2 function body not available
+      freq:1.00 loop depth: 0 size: 4 time: 13
+    scanf/1 function body not available
+      freq:1.00 loop depth: 0 size: 3 time: 12
+
+int main ()
+{
+  int n;
+  int t;
+  int i;
+  int b;
+  int a;
+  int D.2355;
+  int n.0_1;
+  int _13;
+
+  <bb 2> :
+  a_6 = 0;
+  b_7 = 1;
+  i_8 = 1;
+  scanf ("%d", &n);
+  printf ("%d\n%d", a_6, b_7);
+  goto <bb 4>; [INV]
+
+  <bb 3> :
+  t_14 = b_3;
+  b_15 = a_2 + b_3;
+  printf ("%d\n", b_15);
+  a_17 = t_14;
+  i_18 = i_4 + 1;
+
+  <bb 4> :
+  # a_2 = PHI <a_6(2), a_17(3)>
+  # b_3 = PHI <b_7(2), b_15(3)>
+  # i_4 = PHI <i_8(2), i_18(3)>
+  n.0_1 = n;
+  if (i_4 < n.0_1)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 5>; [INV]
+
+  <bb 5> :
+  n ={v} {CLOBBER};
+  _13 = 0;
+
+  <bb 6> :
+<L3>:
+  return _13;
+
+}
+
+
+
+;; Function main (main, funcdef_no=0, decl_uid=2344, cgraph_uid=1, symbol_order=0)
+
+int main ()
+{
+  int n;
+  int t;
+  int i;
+  int b;
+  int a;
+  int D.2355;
+  int n.0_1;
+  int _13;
+
+  <bb 2> :
+  a_6 = 0;
+  b_7 = 1;
+  i_8 = 1;
+  scanf ("%d", &n);
+  printf ("%d\n%d", a_6, b_7);
+  goto <bb 4>; [INV]
+
+  <bb 3> :
+  t_14 = b_3;
+  b_15 = a_2 + b_3;
+  printf ("%d\n", b_15);
+  a_17 = t_14;
+  i_18 = i_4 + 1;
+
+  <bb 4> :
+  # a_2 = PHI <a_6(2), a_17(3)>
+  # b_3 = PHI <b_7(2), b_15(3)>
+  # i_4 = PHI <i_8(2), i_18(3)>
+  n.0_1 = n;
+  if (i_4 < n.0_1)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 5>; [INV]
+
+  <bb 5> :
+  n ={v} {CLOBBER};
+  _13 = 0;
+
+  <bb 6> :
+<L3>:
+  return _13;
+
+}
+
+
+
+;; Function main (main, funcdef_no=0, decl_uid=2344, cgraph_uid=1, symbol_order=0)
+
+int main ()
+{
+  int n;
+  int t;
+  int i;
+  int b;
+  int a;
+  int D.2355;
+  int n.0_1;
+  int _13;
+
+  <bb 2> :
+  a_6 = 0;
+  b_7 = 1;
+  i_8 = 1;
+  scanf ("%d", &n);
+  printf ("%d\n%d", a_6, b_7);
+  goto <bb 4>; [INV]
+
+  <bb 3> :
+  t_14 = b_3;
+  b_15 = a_2 + b_3;
+  printf ("%d\n", b_15);
+  a_17 = t_14;
+  i_18 = i_4 + 1;
+
+  <bb 4> :
+  # a_2 = PHI <a_6(2), a_17(3)>
+  # b_3 = PHI <b_7(2), b_15(3)>
+  # i_4 = PHI <i_8(2), i_18(3)>
+  n.0_1 = n;
+  if (i_4 < n.0_1)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 5>; [INV]
+
+  <bb 5> :
+  n ={v} {CLOBBER};
+  _13 = 0;
+
+  <bb 6> :
+<L3>:
+  return _13;
+
+}
+
+
+
+;; Function main (main, funcdef_no=0, decl_uid=2344, cgraph_uid=1, symbol_order=0)
+
+int main ()
+{
+  int n;
+  int t;
+  int i;
+  int b;
+  int a;
+  int D.2355;
+  int n.0_1;
+  int _13;
+
+  <bb 2> :
+  a_6 = 0;
+  b_7 = 1;
+  i_8 = 1;
+  scanf ("%d", &n);
+  printf ("%d\n%d", a_6, b_7);
+  goto <bb 4>; [INV]
+
+  <bb 3> :
+  t_14 = b_3;
+  b_15 = a_2 + b_3;
+  printf ("%d\n", b_15);
+  a_17 = t_14;
+  i_18 = i_4 + 1;
+
+  <bb 4> :
+  # a_2 = PHI <a_6(2), a_17(3)>
+  # b_3 = PHI <b_7(2), b_15(3)>
+  # i_4 = PHI <i_8(2), i_18(3)>
+  n.0_1 = n;
+  if (i_4 < n.0_1)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 5>; [INV]
+
+  <bb 5> :
+  n ={v} {CLOBBER};
+  _13 = 0;
+
+  <bb 6> :
+<L3>:
+  return _13;
+
+}
+
+
+
+;; Function main (main, funcdef_no=0, decl_uid=2344, cgraph_uid=1, symbol_order=0)
+
+int main ()
+{
+  int n;
+  int t;
+  int i;
+  int b;
+  int a;
+  int D.2355;
+  int n.0_1;
+  int _13;
+
+  <bb 2> :
+  a_6 = 0;
+  b_7 = 1;
+  i_8 = 1;
+  scanf ("%d", &n);
+  printf ("%d\n%d", a_6, b_7);
+  goto <bb 4>; [INV]
+
+  <bb 3> :
+  t_14 = b_3;
+  b_15 = a_2 + b_3;
+  printf ("%d\n", b_15);
+  a_17 = t_14;
+  i_18 = i_4 + 1;
+
+  <bb 4> :
+  # a_2 = PHI <a_6(2), a_17(3)>
+  # b_3 = PHI <b_7(2), b_15(3)>
+  # i_4 = PHI <i_8(2), i_18(3)>
+  n.0_1 = n;
+  if (i_4 < n.0_1)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 5>; [INV]
+
+  <bb 5> :
+  n ={v} {CLOBBER};
+  _13 = 0;
+
+  <bb 6> :
+<L3>:
+  return _13;
+
+}
+
+
+
+;; Function main (main, funcdef_no=0, decl_uid=2344, cgraph_uid=1, symbol_order=0)
+
+int main ()
+{
+  int n;
+  int t;
+  int i;
+  int b;
+  int a;
+  int D.2355;
+  int n.0_1;
+  int _13;
+
+  <bb 2> :
+  a_6 = 0;
+  b_7 = 1;
+  i_8 = 1;
+  scanf ("%d", &n);
+  printf ("%d\n%d", a_6, b_7);
+  goto <bb 4>; [INV]
+
+  <bb 3> :
+  t_14 = b_3;
+  b_15 = a_2 + b_3;
+  printf ("%d\n", b_15);
+  a_17 = t_14;
+  i_18 = i_4 + 1;
+
+  <bb 4> :
+  # a_2 = PHI <a_6(2), a_17(3)>
+  # b_3 = PHI <b_7(2), b_15(3)>
+  # i_4 = PHI <i_8(2), i_18(3)>
+  n.0_1 = n;
+  if (i_4 < n.0_1)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 5>; [INV]
+
+  <bb 5> :
+  n ={v} {CLOBBER};
+  _13 = 0;
+
+  <bb 6> :
+<L3>:
+  return _13;
+
+}
+
+
+
+;; Function main (main, funcdef_no=0, decl_uid=2344, cgraph_uid=1, symbol_order=0)
+
+int main ()
+{
+  int n;
+  int t;
+  int i;
+  int b;
+  int a;
+  int D.2355;
+  int n.0_1;
+  int _13;
+
+  <bb 2> :
+  a_6 = 0;
+  b_7 = 1;
+  i_8 = 1;
+  scanf ("%d", &n);
+  printf ("%d\n%d", a_6, b_7);
+  goto <bb 4>; [INV]
+
+  <bb 3> :
+  t_14 = b_3;
+  b_15 = a_2 + b_3;
+  printf ("%d\n", b_15);
+  a_17 = t_14;
+  i_18 = i_4 + 1;
+
+  <bb 4> :
+  # a_2 = PHI <a_6(2), a_17(3)>
+  # b_3 = PHI <b_7(2), b_15(3)>
+  # i_4 = PHI <i_8(2), i_18(3)>
+  n.0_1 = n;
+  if (i_4 < n.0_1)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 5>; [INV]
+
+  <bb 5> :
+  n ={v} {CLOBBER};
+  _13 = 0;
+
+  <bb 6> :
+<L3>:
+  return _13;
+
+}
+
+
+
+;; Function main (main, funcdef_no=0, decl_uid=2344, cgraph_uid=1, symbol_order=0)
+
+int main ()
+{
+  int n;
+  int t;
+  int i;
+  int b;
+  int a;
+  int D.2355;
+  int n.0_1;
+  int _13;
+
+  <bb 2> :
+  a_6 = 0;
+  b_7 = 1;
+  i_8 = 1;
+  scanf ("%d", &n);
+  printf ("%d\n%d", a_6, b_7);
+  goto <bb 4>; [INV]
+
+  <bb 3> :
+  t_14 = b_3;
+  b_15 = a_2 + b_3;
+  printf ("%d\n", b_15);
+  a_17 = t_14;
+  i_18 = i_4 + 1;
+
+  <bb 4> :
+  # a_2 = PHI <a_6(2), a_17(3)>
+  # b_3 = PHI <b_7(2), b_15(3)>
+  # i_4 = PHI <i_8(2), i_18(3)>
+  n.0_1 = n;
+  if (i_4 < n.0_1)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 5>; [INV]
+
+  <bb 5> :
+  n ={v} {CLOBBER};
+  _13 = 0;
+
+  <bb 6> :
+<L3>:
+  return _13;
+
+}
+
+
+

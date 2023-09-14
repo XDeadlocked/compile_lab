@@ -739,7 +739,6 @@ extern int __overflow (FILE *, int);
 # 2 "main.c"
 int main(){
     int a,b,i,t,n;
-
     a=0;
     b=1;
     i=1;
