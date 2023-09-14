@@ -7,12 +7,13 @@
 // 全局变量
 int a = INITIAL_A;
 int b = INITIAL_B;
-
+int i;
 // 函数原型声明
 void print_fibonacci_sequence(int n);
 
 int main(){
-    int n, i = 1;
+    int n;
+    i = 1;
     
     // 从用户处获取输入
     printf("请输入斐波那契数列的项数：");
