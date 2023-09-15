@@ -1,0 +1,100 @@
+digraph "a-main1.c.023t.ssa" {
+overlap=false;
+subgraph "cluster_printf" {
+	style="dashed";
+	color="black";
+	label="printf ()";
+	fn_15_basic_block_0 [shape=Mdiamond,style=filled,fillcolor=white,label="ENTRY"];
+
+	fn_15_basic_block_1 [shape=Mdiamond,style=filled,fillcolor=white,label="EXIT"];
+
+	fn_15_basic_block_2 [shape=record,style=filled,fillcolor=lightgrey,label="{\<bb\ 2\>:\l\
+|_4\ =\ __printf_chk\ (1,\ __fmt_2(D),\ __builtin_va_arg_pack\ ());\l\
+|return\ _4;\l\
+}"];
+
+	fn_15_basic_block_0:s -> fn_15_basic_block_2:n [style="solid,bold",color=blue,weight=100,constraint=true];
+	fn_15_basic_block_2:s -> fn_15_basic_block_1:n [style="solid,bold",color=black,weight=10,constraint=true];
+	fn_15_basic_block_0:s -> fn_15_basic_block_1:n [style="invis",constraint=true];
+}
+subgraph "cluster_print_fibonacci_sequence" {
+	style="dashed";
+	color="black";
+	label="print_fibonacci_sequence ()";
+	subgraph cluster_24_1 {
+	style="filled";
+	color="darkgreen";
+	fillcolor="grey88";
+	label="loop 1";
+	labeljust=l;
+	penwidth=2;
+	fn_24_basic_block_4 [shape=record,style=filled,fillcolor=lightgrey,label="{\<bb\ 4\>:\l\
+|i.7_9\ =\ i;\l\
+|if\ (n_13(D)\ \>\ i.7_9)\l\
+\ \ goto\ \<bb\ 3\>;\ [INV]\l\
+else\l\
+\ \ goto\ \<bb\ 5\>;\ [INV]\l\
+}"];
+
+	fn_24_basic_block_3 [shape=record,style=filled,fillcolor=lightgrey,label="{\<bb\ 3\>:\l\
+|t_14\ =\ b;\l\
+|a.3_3\ =\ a;\l\
+|b.4_4\ =\ b;\l\
+|_5\ =\ a.3_3\ +\ b.4_4;\l\
+|b\ =\ _5;\l\
+|b.5_6\ =\ b;\l\
+|printf\ (\"%d\\n\",\ b.5_6);\l\
+|a\ =\ t_14;\l\
+|i.6_7\ =\ i;\l\
+|_8\ =\ i.6_7\ +\ 1;\l\
+|i\ =\ _8;\l\
+}"];
+
+	}
+	fn_24_basic_block_0 [shape=Mdiamond,style=filled,fillcolor=white,label="ENTRY"];
+
+	fn_24_basic_block_1 [shape=Mdiamond,style=filled,fillcolor=white,label="EXIT"];
+
+	fn_24_basic_block_2 [shape=record,style=filled,fillcolor=lightgrey,label="{\<bb\ 2\>:\l\
+|b.1_1\ =\ b;\l\
+|a.2_2\ =\ a;\l\
+|printf\ (\"%d\\n%d\\n\",\ a.2_2,\ b.1_1);\l\
+goto\ \<bb\ 4\>;\ [INV]\l\
+}"];
+
+	fn_24_basic_block_5 [shape=record,style=filled,fillcolor=lightgrey,label="{\<bb\ 5\>:\l\
+|return;\l\
+}"];
+
+	fn_24_basic_block_0:s -> fn_24_basic_block_2:n [style="solid,bold",color=blue,weight=100,constraint=true];
+	fn_24_basic_block_2:s -> fn_24_basic_block_4:n [style="solid,bold",color=blue,weight=100,constraint=true];
+	fn_24_basic_block_3:s -> fn_24_basic_block_4:n [style="dotted,bold",color=blue,weight=10,constraint=false];
+	fn_24_basic_block_4:s -> fn_24_basic_block_3:n [style="solid,bold",color=black,weight=10,constraint=true];
+	fn_24_basic_block_4:s -> fn_24_basic_block_5:n [style="solid,bold",color=black,weight=10,constraint=true];
+	fn_24_basic_block_5:s -> fn_24_basic_block_1:n [style="solid,bold",color=black,weight=10,constraint=true];
+	fn_24_basic_block_0:s -> fn_24_basic_block_1:n [style="invis",constraint=true];
+}
+subgraph "cluster_main" {
+	style="dashed";
+	color="black";
+	label="main ()";
+	fn_23_basic_block_0 [shape=Mdiamond,style=filled,fillcolor=white,label="ENTRY"];
+
+	fn_23_basic_block_1 [shape=Mdiamond,style=filled,fillcolor=white,label="EXIT"];
+
+	fn_23_basic_block_2 [shape=record,style=filled,fillcolor=lightgrey,label="{\<bb\ 2\>:\l\
+|i\ =\ 1;\l\
+|printf\ (\"\\xe8\\xaf\\xb7\\xe8\\xbe\\x93\\xe5\\x85\\xa5\\xe6\\x96\\x90\\xe6\\xb3\\xa2\\xe9\\x82\\xa3\\xe5\\xa5\\x91\\xe6\\x95\\xb0\\xe5\\x88\\x97\\xe7\\x9a\\x84\\xe9\\xa1\\xb9\\xe6\\x95\\xb0\\xef\\xbc\\x9a\");\l\
+|scanf\ (\"%d\",\ &n);\l\
+|n.0_1\ =\ n;\l\
+|print_fibonacci_sequence\ (n.0_1);\l\
+|_7\ =\ 0;\l\
+|n\ =\{v\}\ \{CLOBBER\};\l\
+|return\ _7;\l\
+}"];
+
+	fn_23_basic_block_0:s -> fn_23_basic_block_2:n [style="solid,bold",color=blue,weight=100,constraint=true];
+	fn_23_basic_block_2:s -> fn_23_basic_block_1:n [style="solid,bold",color=black,weight=10,constraint=true];
+	fn_23_basic_block_0:s -> fn_23_basic_block_1:n [style="invis",constraint=true];
+}
+}

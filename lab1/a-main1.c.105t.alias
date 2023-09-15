@@ -1,0 +1,431 @@
+
+;; Function print_fibonacci_sequence (print_fibonacci_sequence, funcdef_no=24, decl_uid=2549, cgraph_uid=25, symbol_order=27)
+
+Points-to analysis
+
+Constraints:
+
+ANYTHING = &ANYTHING
+ESCAPED = *ESCAPED
+ESCAPED = ESCAPED + UNKNOWN
+*ESCAPED = NONLOCAL
+NONLOCAL = &NONLOCAL
+NONLOCAL = &ESCAPED
+INTEGER = &ANYTHING
+n = &NONLOCAL
+b = NONLOCAL
+b.1_1 = b
+a = NONLOCAL
+a.2_2 = a
+ESCAPED = &NONLOCAL
+ESCAPED = &STRING
+ESCAPED = a.2_2
+ESCAPED = b.1_1
+t_11 = b
+a.3_3 = a
+_4 = a.3_3
+_4 = t_11
+b = _4
+ESCAPED = _4
+ESCAPED = &NONLOCAL
+ESCAPED = &STRING
+ESCAPED = _4
+a = t_11
+ESCAPED = t_11
+i = NONLOCAL
+i.6_5 = i
+_6 = i.6_5
+_6 = &NONLOCAL
+i = _6
+ESCAPED = _6
+i.7_7 = i
+
+Collapsing static cycles and doing variable substitution
+Building predecessor graph
+Detecting pointer and location equivalences
+
+
+// The constraint graph before var-substitution in dot format:
+strict digraph {
+  node [
+    shape = box
+  ]
+  edge [
+    fontsize = "12"
+  ]
+
+  // List of nodes and complex constraints in the constraint graph:
+"NULL";
+"ANYTHING"[label="ANYTHING = { 2 }"];
+"STRING";
+"ESCAPED"[label="ESCAPED = { 3 5 }"];
+"NONLOCAL"[label="NONLOCAL = { 4 5 }"];
+"STOREDANYTHING";
+"INTEGER"[label="INTEGER = { 2 }"];
+"n"[label="n = { 5 }"];
+"b.1_1";
+"b";
+"a.2_2";
+"__printf_chk";
+"_6"[label="_6 = { 5 }"];
+"i.7_7";
+"*NULL";
+"*ANYTHING";
+"*STRING";
+"*STOREDANYTHING";
+"*INTEGER";
+"*n";
+"*__printf_chk";
+"*i.7_7";
+
+  // Edges in the constraint graph:
+"NONLOCAL" -> "ESCAPED";
+"b.1_1" -> "ESCAPED";
+"a.2_2" -> "ESCAPED";
+"b" -> "ESCAPED";
+"b" -> "ESCAPED";
+"_6" -> "ESCAPED";
+"ESCAPED" -> "ESCAPED";
+"b" -> "b.1_1";
+"NONLOCAL" -> "b";
+"b" -> "b";
+"b" -> "b";
+"b" -> "b";
+"b" -> "b";
+"b" -> "b";
+"b" -> "a.2_2";
+"NONLOCAL" -> "_6";
+"_6" -> "_6";
+"_6" -> "_6";
+"_6" -> "_6";
+"_6" -> "i.7_7";
+}
+
+
+Rewriting constraints and unifying variables
+Uniting pointer but not location equivalent variables
+Finding indirect cycles
+
+
+// The constraint graph before solve-graph in dot format:
+strict digraph {
+  node [
+    shape = box
+  ]
+  edge [
+    fontsize = "12"
+  ]
+
+  // List of nodes and complex constraints in the constraint graph:
+"NULL";
+"ANYTHING";
+"STRING";
+"ESCAPED" [label="\N\nESCAPED = ESCAPED + UNKNOWN\lESCAPED = *ESCAPED\l*ESCAPED = NONLOCAL\l"];
+"STOREDANYTHING";
+"INTEGER";
+"n";
+"b";
+"__printf_chk";
+
+  // Edges in the constraint graph:
+"STOREDANYTHING" -> "ESCAPED";
+"b" -> "ESCAPED";
+}
+
+
+Solving graph
+
+
+// The constraint graph after solve-graph in dot format:
+strict digraph {
+  node [
+    shape = box
+  ]
+  edge [
+    fontsize = "12"
+  ]
+
+  // List of nodes and complex constraints in the constraint graph:
+"NULL";
+"ANYTHING";
+"STRING";
+"ESCAPED" [label="\N\nESCAPED = ESCAPED + UNKNOWN\lESCAPED = *ESCAPED\l*ESCAPED = b\l"];
+"STOREDANYTHING";
+"INTEGER";
+"n";
+"b";
+"__printf_chk";
+
+  // Edges in the constraint graph:
+"STOREDANYTHING" -> "ESCAPED";
+"b" -> "ESCAPED";
+}
+
+
+
+Points-to sets
+
+ANYTHING = { ANYTHING }
+ESCAPED = { STRING ESCAPED NONLOCAL }
+NONLOCAL = { ESCAPED NONLOCAL } same as b
+STOREDANYTHING = { }
+INTEGER = { ANYTHING }
+n = { NONLOCAL }
+b.1_1 = { ESCAPED NONLOCAL } same as b
+b = { ESCAPED NONLOCAL }
+a.2_2 = { ESCAPED NONLOCAL } same as b
+a = { ESCAPED NONLOCAL } same as b
+__printf_chk = { }
+t_11 = { ESCAPED NONLOCAL } same as b
+a.3_3 = { ESCAPED NONLOCAL } same as b
+_4 = { ESCAPED NONLOCAL } same as b
+i.6_5 = { ESCAPED NONLOCAL } same as b
+i = { ESCAPED NONLOCAL } same as b
+_6 = { ESCAPED NONLOCAL } same as b
+i.7_7 = { ESCAPED NONLOCAL } same as b
+
+
+Alias information for print_fibonacci_sequence
+
+Aliased symbols
+
+
+Call clobber information
+
+ESCAPED, points-to non-local, points-to vars: { }
+
+Flow-insensitive points-to information
+
+
+void print_fibonacci_sequence (int n)
+{
+  int t;
+  int b.1_1;
+  int a.2_2;
+  int a.3_3;
+  int _4;
+  int i.6_5;
+  int _6;
+  int i.7_7;
+
+  <bb 2> [local count: 118111600]:
+  b.1_1 = b;
+  a.2_2 = a;
+  __printf_chk (1, "%d\n%d\n", a.2_2, b.1_1);
+  goto <bb 4>; [100.00%]
+
+  <bb 3> [local count: 955630225]:
+  t_11 = b;
+  a.3_3 = a;
+  _4 = a.3_3 + t_11;
+  b = _4;
+  __printf_chk (1, "%d\n", _4);
+  a = t_11;
+  i.6_5 = i;
+  _6 = i.6_5 + 1;
+  i = _6;
+
+  <bb 4> [local count: 1073741824]:
+  i.7_7 = i;
+  if (i.7_7 < n_10(D))
+    goto <bb 3>; [89.00%]
+  else
+    goto <bb 5>; [11.00%]
+
+  <bb 5> [local count: 118111600]:
+  return;
+
+}
+
+
+
+;; Function main (main, funcdef_no=23, decl_uid=2550, cgraph_uid=24, symbol_order=26) (executed once)
+
+Points-to analysis
+
+Constraints:
+
+ANYTHING = &ANYTHING
+ESCAPED = *ESCAPED
+ESCAPED = ESCAPED + UNKNOWN
+*ESCAPED = NONLOCAL
+NONLOCAL = &NONLOCAL
+NONLOCAL = &ESCAPED
+INTEGER = &ANYTHING
+i = NONLOCAL
+i = &NONLOCAL
+ESCAPED = &NONLOCAL
+ESCAPED = &NONLOCAL
+ESCAPED = &STRING
+ESCAPED = &STRING
+ESCAPED = &n
+n.0_1 = n
+
+Collapsing static cycles and doing variable substitution
+Building predecessor graph
+Detecting pointer and location equivalences
+
+
+// The constraint graph before var-substitution in dot format:
+strict digraph {
+  node [
+    shape = box
+  ]
+  edge [
+    fontsize = "12"
+  ]
+
+  // List of nodes and complex constraints in the constraint graph:
+"NULL";
+"ANYTHING"[label="ANYTHING = { 2 }"];
+"STRING";
+"ESCAPED"[label="ESCAPED = { 3 5 8 }"];
+"NONLOCAL"[label="NONLOCAL = { 4 5 }"];
+"STOREDANYTHING";
+"INTEGER"[label="INTEGER = { 2 }"];
+"n";
+"i"[label="i = { 5 }"];
+"__printf_chk";
+"*__isoc99_scanf";
+"n.0_1";
+"print_fibonacci_sequence";
+"main";
+"*NULL";
+"*ANYTHING";
+"*STRING";
+"*ESCAPED";
+"*NONLOCAL";
+"*STOREDANYTHING";
+"*INTEGER";
+"*n";
+"*i";
+"*__printf_chk";
+"**__isoc99_scanf";
+"*n.0_1";
+"*print_fibonacci_sequence";
+"*main";
+
+  // Edges in the constraint graph:
+"*ESCAPED" -> "ESCAPED";
+"NONLOCAL" -> "i";
+"n" -> "n.0_1";
+"NONLOCAL" -> "*ESCAPED";
+}
+
+
+Rewriting constraints and unifying variables
+Uniting pointer but not location equivalent variables
+Finding indirect cycles
+
+
+// The constraint graph before solve-graph in dot format:
+strict digraph {
+  node [
+    shape = box
+  ]
+  edge [
+    fontsize = "12"
+  ]
+
+  // List of nodes and complex constraints in the constraint graph:
+"NULL";
+"ANYTHING";
+"STRING";
+"ESCAPED" [label="\N\nESCAPED = ESCAPED + UNKNOWN\lESCAPED = *ESCAPED\l*ESCAPED = NONLOCAL\l"];
+"STOREDANYTHING";
+"INTEGER";
+"i";
+"__printf_chk";
+"*__isoc99_scanf";
+"n.0_1";
+"print_fibonacci_sequence";
+"main";
+
+  // Edges in the constraint graph:
+"STOREDANYTHING" -> "ESCAPED";
+"STOREDANYTHING" -> "n.0_1";
+}
+
+
+Solving graph
+
+
+// The constraint graph after solve-graph in dot format:
+strict digraph {
+  node [
+    shape = box
+  ]
+  edge [
+    fontsize = "12"
+  ]
+
+  // List of nodes and complex constraints in the constraint graph:
+"NULL";
+"ANYTHING";
+"STRING";
+"ESCAPED" [label="\N\nESCAPED = ESCAPED + UNKNOWN\lESCAPED = *ESCAPED\l*ESCAPED = i\l"];
+"STOREDANYTHING";
+"INTEGER";
+"i";
+"__printf_chk";
+"*__isoc99_scanf";
+"n.0_1";
+"print_fibonacci_sequence";
+"main";
+
+  // Edges in the constraint graph:
+"STOREDANYTHING" -> "ESCAPED";
+"STOREDANYTHING" -> "n.0_1";
+"i" -> "ESCAPED";
+"i" -> "n.0_1";
+"n.0_1" -> "ESCAPED";
+}
+
+
+
+Points-to sets
+
+ANYTHING = { ANYTHING }
+ESCAPED = { STRING ESCAPED NONLOCAL n }
+NONLOCAL = { ESCAPED NONLOCAL } same as i
+STOREDANYTHING = { }
+INTEGER = { ANYTHING }
+n = { ESCAPED NONLOCAL } same as n.0_1
+i = { ESCAPED NONLOCAL }
+__printf_chk = { }
+*__isoc99_scanf = { }
+n.0_1 = { ESCAPED NONLOCAL }
+print_fibonacci_sequence = { }
+main = { }
+
+
+Alias information for main
+
+Aliased symbols
+
+n, UID D.2552, int, is addressable
+
+Call clobber information
+
+ESCAPED, points-to non-local, points-to vars: { D.2552 } (escaped)
+
+Flow-insensitive points-to information
+
+
+int main ()
+{
+  int n;
+  int n.0_1;
+
+  <bb 2> [local count: 1073741824]:
+  i = 1;
+  __printf_chk (1, "\xe8\xaf\xb7\xe8\xbe\x93\xe5\x85\xa5\xe6\x96\x90\xe6\xb3\xa2\xe9\x82\xa3\xe5\xa5\x91\xe6\x95\xb0\xe5\x88\x97\xe7\x9a\x84\xe9\xa1\xb9\xe6\x95\xb0\xef\xbc\x9a");
+  scanf ("%d", &n);
+  n.0_1 = n;
+  print_fibonacci_sequence (n.0_1);
+  n ={v} {CLOBBER};
+  return 0;
+
+}
+
+

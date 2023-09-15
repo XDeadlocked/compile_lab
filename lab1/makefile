@@ -5,14 +5,20 @@ pre:
 lexer: 
 	clang -E -Xclang -dump-tokens main.c 2> lexer.txt
 
+lexer1: 
+	clang -E -Xclang -dump-tokens main1.c 2> lexer1.txt
+
 ast-gcc: 
-	gcc -fdump-tree-original-raw main.c 
+	gcc -fdump-tree-original-raw main1.c 
 
 ast-llvm: 
-	clang -E -Xclang -ast-dump main.c
+	clang -E -Xclang -ast-dump main1.c
 
 cfg: 
-	gcc -O1 -fdump-tree-all-graph=cfg_O1/dump main.c
+	gcc -O0 -fdump-tree-all-graph main1.c
+
+cfg1: 
+	gcc -O1 -fdump-tree-all-graph main1.c
 
 ir-gcc: 
 	gcc -O0 -fdump-rtl-all-graph main.c
@@ -20,8 +26,14 @@ ir-gcc:
 ir-llvm: 
 	clang -S -emit-llvm main.c
 
+ir-llvm1: 
+	clang -S -emit-llvm main1.c
+
 pass-llvm:
 	llc -print-before-all -print-after-all main.ll > main.log 2>&1
+
+pass-llvm1:
+	llc -print-before-all -print-after-all main1.ll > main1.log 2>&1
 
 asm: 
 	gcc -O0 -o main.S -S -masm=att main.i
@@ -45,3 +57,12 @@ clean:
 
 clean-all: 
 	rm -rf *.c.* *.o *.S *.dot *.out *.txt *.ll *.i main  
+
+stack-safety:
+	opt -stack-safety-local main1.bc -o main1_anay.bc
+
+cgp:
+	opt -codegenprepare main1.bc -o main1_anay_cgp.bc
+
+dal:
+	opt -codegenprepare main1.bc -o main1_anay_dal.bc

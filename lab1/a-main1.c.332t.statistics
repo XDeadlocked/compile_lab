@@ -1,0 +1,63 @@
+28 ssa "unused VAR_DECLs removed" "print_fibonacci_sequence" 1
+42 fre "RPO blocks" "printf" 1
+42 fre "RPO iterations == 10" "printf" 1
+42 fre "RPO blocks visited" "printf" 1
+42 fre "RPO blocks executable" "printf" 1
+42 fre "RPO block visited times == 1" "printf" 1
+42 fre "RPO num avail == 1" "printf" 1
+42 fre "RPO num values == 3" "printf" 1
+42 fre "RPO num lattice == 3" "printf" 1
+42 fre "RPO num avail == 10" "print_fibonacci_sequence" 1
+42 fre "RPO blocks" "print_fibonacci_sequence" 4
+42 fre "RPO iterations == 10" "print_fibonacci_sequence" 1
+42 fre "RPO blocks visited" "print_fibonacci_sequence" 4
+42 fre "RPO num lattice == 19" "print_fibonacci_sequence" 1
+42 fre "RPO num values == 19" "print_fibonacci_sequence" 1
+42 fre "RPO blocks executable" "print_fibonacci_sequence" 4
+42 fre "RPO block visited times == 1" "print_fibonacci_sequence" 4
+42 fre "Eliminated" "print_fibonacci_sequence" 2
+56 release_ssa "SSA names released" "print_fibonacci_sequence" 6
+56 release_ssa "SSA name holes removed" "print_fibonacci_sequence" 6
+34 einline "unused VAR_DECLs removed" "main" 4
+34 einline "Symbol to SSA rewrite" "main" 1
+37 ccp "Constants propagated" "main" 1
+37 ccp "Statements deleted" "main" 1
+42 fre "RPO blocks" "main" 1
+42 fre "RPO iterations == 10" "main" 1
+42 fre "RPO num values == 7" "main" 1
+42 fre "RPO blocks visited" "main" 1
+42 fre "RPO num avail == 2" "main" 1
+42 fre "RPO num lattice == 7" "main" 1
+42 fre "RPO blocks executable" "main" 1
+42 fre "RPO block visited times == 1" "main" 1
+56 release_ssa "SSA names released" "main" 3
+56 release_ssa "SSA name holes removed" "main" 3
+112 fre "RPO blocks" "print_fibonacci_sequence" 4
+112 fre "RPO iterations == 10" "print_fibonacci_sequence" 1
+112 fre "RPO num lattice == 15" "print_fibonacci_sequence" 1
+112 fre "RPO blocks visited" "print_fibonacci_sequence" 4
+112 fre "RPO num values == 15" "print_fibonacci_sequence" 1
+112 fre "RPO blocks executable" "print_fibonacci_sequence" 4
+112 fre "RPO block visited times == 1" "print_fibonacci_sequence" 4
+112 fre "RPO num avail == 8" "print_fibonacci_sequence" 1
+125 ch "RPO blocks" "print_fibonacci_sequence" 2
+125 ch "RPO iterations == 10" "print_fibonacci_sequence" 1
+125 ch "Incremental SSA update" "print_fibonacci_sequence" 1
+125 ch "RPO blocks visited" "print_fibonacci_sequence" 2
+125 ch "RPO blocks executable" "print_fibonacci_sequence" 2
+125 ch "RPO block visited times == 1" "print_fibonacci_sequence" 2
+125 ch "RPO num avail == 1" "print_fibonacci_sequence" 1
+125 ch "RPO num values == 3" "print_fibonacci_sequence" 1
+125 ch "RPO num lattice == 3" "print_fibonacci_sequence" 1
+129 dom "Copies propagated" "print_fibonacci_sequence" 1
+129 dom "Redundant expressions eliminated" "print_fibonacci_sequence" 1
+130 copyprop "Statements deleted" "print_fibonacci_sequence" 1
+282 combine "two-insn combine" "print_fibonacci_sequence" 1
+112 fre "RPO blocks" "main" 1
+112 fre "RPO iterations == 10" "main" 1
+112 fre "RPO num values == 6" "main" 1
+112 fre "RPO blocks visited" "main" 1
+112 fre "RPO blocks executable" "main" 1
+112 fre "RPO block visited times == 1" "main" 1
+112 fre "RPO num avail == 1" "main" 1
+112 fre "RPO num lattice == 6" "main" 1

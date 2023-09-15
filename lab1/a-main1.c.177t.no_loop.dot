@@ -1,0 +1,25 @@
+digraph "a-main1.c.177t.no_loop" {
+overlap=false;
+subgraph "cluster_main" {
+	style="dashed";
+	color="black";
+	label="main ()";
+	fn_23_basic_block_0 [shape=Mdiamond,style=filled,fillcolor=white,label="ENTRY"];
+
+	fn_23_basic_block_1 [shape=Mdiamond,style=filled,fillcolor=white,label="EXIT"];
+
+	fn_23_basic_block_2 [shape=record,style=filled,fillcolor=lightgrey,label="{COUNT:1073741824\<bb\ 2\>:\l\
+|i\ =\ 1;\l\
+|__printf_chk\ (1,\ \"\\xe8\\xaf\\xb7\\xe8\\xbe\\x93\\xe5\\x85\\xa5\\xe6\\x96\\x90\\xe6\\xb3\\xa2\\xe9\\x82\\xa3\\xe5\\xa5\\x91\\xe6\\x95\\xb0\\xe5\\x88\\x97\\xe7\\x9a\\x84\\xe9\\xa1\\xb9\\xe6\\x95\\xb0\\xef\\xbc\\x9a\");\l\
+|scanf\ (\"%d\",\ &n);\l\
+|n.0_1\ =\ n;\l\
+|print_fibonacci_sequence\ (n.0_1);\l\
+|n\ =\{v\}\ \{CLOBBER\};\l\
+|return\ 0;\l\
+}"];
+
+	fn_23_basic_block_0:s -> fn_23_basic_block_2:n [style="solid,bold",color=blue,weight=100,constraint=true,label="[100%]"];
+	fn_23_basic_block_2:s -> fn_23_basic_block_1:n [style="solid,bold",color=black,weight=10,constraint=true,label="[100%]"];
+	fn_23_basic_block_0:s -> fn_23_basic_block_1:n [style="invis",constraint=true];
+}
+}

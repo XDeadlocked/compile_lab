@@ -1,0 +1,73 @@
+
+;; Function print_fibonacci_sequence (print_fibonacci_sequence, funcdef_no=24, decl_uid=2549, cgraph_uid=25, symbol_order=27)
+
+;; 2 loops found
+;;
+;; Loop 0
+;;  header 0, latch 1
+;;  depth 0, outer -1
+;;  nodes: 0 1 2 5 3 8 6 7 4
+;;
+;; Loop 1
+;;  header 3, latch 6
+;;  depth 1, outer 0
+;;  nodes: 3 6
+;; 2 succs { 5 7 }
+;; 5 succs { 3 }
+;; 3 succs { 6 8 }
+;; 8 succs { 4 }
+;; 6 succs { 3 }
+;; 7 succs { 4 }
+;; 4 succs { 1 }
+void print_fibonacci_sequence (int n)
+{
+  int t;
+  int b.1_1;
+  int a.2_2;
+  int a.3_3;
+  int _4;
+  int i.6_5;
+  int _6;
+  int i.7_18;
+
+  <bb 2> [local count: 118111600]:
+  b.1_1 = b;
+  a.2_2 = a;
+  __printf_chk (1, "%d\n%d\n", a.2_2, b.1_1);
+  i.7_18 = i;
+  if (n_10(D) > i.7_18)
+    goto <bb 5>; [89.00%]
+  else
+    goto <bb 7>; [11.00%]
+
+  <bb 5> [local count: 105119324]:
+
+  <bb 3> [local count: 955630225]:
+  t_11 = b;
+  a.3_3 = a;
+  _4 = a.3_3 + t_11;
+  b = _4;
+  __printf_chk (1, "%d\n", _4);
+  a = t_11;
+  i.6_5 = i;
+  _6 = i.6_5 + 1;
+  i = _6;
+  if (_6 < n_10(D))
+    goto <bb 6>; [89.00%]
+  else
+    goto <bb 8>; [11.00%]
+
+  <bb 8> [local count: 105119324]:
+  goto <bb 4>; [100.00%]
+
+  <bb 6> [local count: 850510901]:
+  goto <bb 3>; [100.00%]
+
+  <bb 7> [local count: 12992276]:
+
+  <bb 4> [local count: 118111600]:
+  return;
+
+}
+
+

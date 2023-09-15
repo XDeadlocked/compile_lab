@@ -1,0 +1,74 @@
+
+;; Function main (main, funcdef_no=0, decl_uid=2349, cgraph_uid=1, symbol_order=3)
+
+int main ()
+{
+  int n;
+  int D.2360;
+  int n.0_1;
+  int _7;
+
+  <bb 2> :
+  i = 1;
+  printf ("\xe8\xaf\xb7\xe8\xbe\x93\xe5\x85\xa5\xe6\x96\x90\xe6\xb3\xa2\xe9\x82\xa3\xe5\xa5\x91\xe6\x95\xb0\xe5\x88\x97\xe7\x9a\x84\xe9\xa1\xb9\xe6\x95\xb0\xef\xbc\x9a");
+  scanf ("%d", &n);
+  n.0_1 = n;
+  print_fibonacci_sequence (n.0_1);
+  _7 = 0;
+  n ={v} {CLOBBER};
+
+  <bb 3> :
+<L1>:
+  return _7;
+
+}
+
+
+
+;; Function print_fibonacci_sequence (print_fibonacci_sequence, funcdef_no=1, decl_uid=2348, cgraph_uid=2, symbol_order=4)
+
+void print_fibonacci_sequence (int n)
+{
+  int t;
+  int b.1_1;
+  int a.2_2;
+  int a.3_3;
+  int b.4_4;
+  int _5;
+  int b.5_6;
+  int i.6_7;
+  int _8;
+  int i.7_9;
+
+  <bb 2> :
+  b.1_1 = b;
+  a.2_2 = a;
+  printf ("%d\n%d\n", a.2_2, b.1_1);
+  goto <bb 4>; [INV]
+
+  <bb 3> :
+  t_14 = b;
+  a.3_3 = a;
+  b.4_4 = b;
+  _5 = a.3_3 + b.4_4;
+  b = _5;
+  b.5_6 = b;
+  printf ("%d\n", b.5_6);
+  a = t_14;
+  i.6_7 = i;
+  _8 = i.6_7 + 1;
+  i = _8;
+
+  <bb 4> :
+  i.7_9 = i;
+  if (n_13(D) > i.7_9)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 5>; [INV]
+
+  <bb 5> :
+  return;
+
+}
+
+
