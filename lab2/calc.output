@@ -1,0 +1,627 @@
+语法
+
+    0 $accept: calculation $end
+
+    1 calculation: ε
+    2            | calculation line
+
+    3 line: T_NEWLINE
+    4     | mixed_expression T_NEWLINE
+    5     | expression T_NEWLINE
+    6     | T_QUIT T_NEWLINE
+
+    7 mixed_expression: T_FLOAT
+    8                 | mixed_expression T_PLUS mixed_expression
+    9                 | mixed_expression T_MINUS mixed_expression
+   10                 | mixed_expression T_MULTIPLY mixed_expression
+   11                 | mixed_expression T_DIVIDE mixed_expression
+   12                 | T_LEFT mixed_expression T_RIGHT
+   13                 | expression T_PLUS mixed_expression
+   14                 | expression T_MINUS mixed_expression
+   15                 | expression T_MULTIPLY mixed_expression
+   16                 | expression T_DIVIDE mixed_expression
+   17                 | mixed_expression T_PLUS expression
+   18                 | mixed_expression T_MINUS expression
+   19                 | mixed_expression T_MULTIPLY expression
+   20                 | mixed_expression T_DIVIDE expression
+   21                 | expression T_DIVIDE expression
+
+   22 expression: T_INT
+   23           | expression T_PLUS expression
+   24           | expression T_MINUS expression
+   25           | expression T_MULTIPLY expression
+   26           | T_LEFT expression T_RIGHT
+
+
+终结语词，附有它们出现处的规则
+
+    $end (0) 0
+    error (256)
+    T_INT <ival> (258) 22
+    T_FLOAT <fval> (259) 7
+    T_PLUS (260) 8 13 17 23
+    T_MINUS (261) 9 14 18 24
+    T_MULTIPLY (262) 10 15 19 25
+    T_DIVIDE (263) 11 16 20 21
+    T_LEFT (264) 12 26
+    T_RIGHT (265) 12 26
+    T_NEWLINE (266) 3 4 5 6
+    T_QUIT (267) 6
+
+
+非终结语词，附有它们出现处的规则
+
+    $accept (13)
+        on left: 0
+    calculation (14)
+        on left: 1 2
+        on right: 0 2
+    line (15)
+        on left: 3 4 5 6
+        on right: 2
+    mixed_expression <fval> (16)
+        on left: 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21
+        on right: 4 8 9 10 11 12 13 14 15 16 17 18 19 20
+    expression <ival> (17)
+        on left: 22 23 24 25 26
+        on right: 5 13 14 15 16 17 18 19 20 21 23 24 25 26
+
+
+状态 0
+
+    0 $accept: • calculation $end
+
+    $default  使用规则 1 以归约 (calculation)
+
+    calculation  转到状态 1
+
+
+状态 1
+
+    0 $accept: calculation • $end
+    2 calculation: calculation • line
+
+    $end       偏移，并进入状态 2
+    T_INT      偏移，并进入状态 3
+    T_FLOAT    偏移，并进入状态 4
+    T_LEFT     偏移，并进入状态 5
+    T_NEWLINE  偏移，并进入状态 6
+    T_QUIT     偏移，并进入状态 7
+
+    line              转到状态 8
+    mixed_expression  转到状态 9
+    expression        转到状态 10
+
+
+状态 2
+
+    0 $accept: calculation $end •
+
+    $default  接受
+
+
+状态 3
+
+   22 expression: T_INT •
+
+    $default  使用规则 22 以归约 (expression)
+
+
+状态 4
+
+    7 mixed_expression: T_FLOAT •
+
+    $default  使用规则 7 以归约 (mixed_expression)
+
+
+状态 5
+
+   12 mixed_expression: T_LEFT • mixed_expression T_RIGHT
+   26 expression: T_LEFT • expression T_RIGHT
+
+    T_INT    偏移，并进入状态 3
+    T_FLOAT  偏移，并进入状态 4
+    T_LEFT   偏移，并进入状态 5
+
+    mixed_expression  转到状态 11
+    expression        转到状态 12
+
+
+状态 6
+
+    3 line: T_NEWLINE •
+
+    $default  使用规则 3 以归约 (line)
+
+
+状态 7
+
+    6 line: T_QUIT • T_NEWLINE
+
+    T_NEWLINE  偏移，并进入状态 13
+
+
+状态 8
+
+    2 calculation: calculation line •
+
+    $default  使用规则 2 以归约 (calculation)
+
+
+状态 9
+
+    4 line: mixed_expression • T_NEWLINE
+    8 mixed_expression: mixed_expression • T_PLUS mixed_expression
+    9                 | mixed_expression • T_MINUS mixed_expression
+   10                 | mixed_expression • T_MULTIPLY mixed_expression
+   11                 | mixed_expression • T_DIVIDE mixed_expression
+   17                 | mixed_expression • T_PLUS expression
+   18                 | mixed_expression • T_MINUS expression
+   19                 | mixed_expression • T_MULTIPLY expression
+   20                 | mixed_expression • T_DIVIDE expression
+
+    T_PLUS      偏移，并进入状态 14
+    T_MINUS     偏移，并进入状态 15
+    T_MULTIPLY  偏移，并进入状态 16
+    T_DIVIDE    偏移，并进入状态 17
+    T_NEWLINE   偏移，并进入状态 18
+
+
+状态 10
+
+    5 line: expression • T_NEWLINE
+   13 mixed_expression: expression • T_PLUS mixed_expression
+   14                 | expression • T_MINUS mixed_expression
+   15                 | expression • T_MULTIPLY mixed_expression
+   16                 | expression • T_DIVIDE mixed_expression
+   21                 | expression • T_DIVIDE expression
+   23 expression: expression • T_PLUS expression
+   24           | expression • T_MINUS expression
+   25           | expression • T_MULTIPLY expression
+
+    T_PLUS      偏移，并进入状态 19
+    T_MINUS     偏移，并进入状态 20
+    T_MULTIPLY  偏移，并进入状态 21
+    T_DIVIDE    偏移，并进入状态 22
+    T_NEWLINE   偏移，并进入状态 23
+
+
+状态 11
+
+    8 mixed_expression: mixed_expression • T_PLUS mixed_expression
+    9                 | mixed_expression • T_MINUS mixed_expression
+   10                 | mixed_expression • T_MULTIPLY mixed_expression
+   11                 | mixed_expression • T_DIVIDE mixed_expression
+   12                 | T_LEFT mixed_expression • T_RIGHT
+   17                 | mixed_expression • T_PLUS expression
+   18                 | mixed_expression • T_MINUS expression
+   19                 | mixed_expression • T_MULTIPLY expression
+   20                 | mixed_expression • T_DIVIDE expression
+
+    T_PLUS      偏移，并进入状态 14
+    T_MINUS     偏移，并进入状态 15
+    T_MULTIPLY  偏移，并进入状态 16
+    T_DIVIDE    偏移，并进入状态 17
+    T_RIGHT     偏移，并进入状态 24
+
+
+状态 12
+
+   13 mixed_expression: expression • T_PLUS mixed_expression
+   14                 | expression • T_MINUS mixed_expression
+   15                 | expression • T_MULTIPLY mixed_expression
+   16                 | expression • T_DIVIDE mixed_expression
+   21                 | expression • T_DIVIDE expression
+   23 expression: expression • T_PLUS expression
+   24           | expression • T_MINUS expression
+   25           | expression • T_MULTIPLY expression
+   26           | T_LEFT expression • T_RIGHT
+
+    T_PLUS      偏移，并进入状态 19
+    T_MINUS     偏移，并进入状态 20
+    T_MULTIPLY  偏移，并进入状态 21
+    T_DIVIDE    偏移，并进入状态 22
+    T_RIGHT     偏移，并进入状态 25
+
+
+状态 13
+
+    6 line: T_QUIT T_NEWLINE •
+
+    $default  使用规则 6 以归约 (line)
+
+
+状态 14
+
+    8 mixed_expression: mixed_expression T_PLUS • mixed_expression
+   17                 | mixed_expression T_PLUS • expression
+
+    T_INT    偏移，并进入状态 3
+    T_FLOAT  偏移，并进入状态 4
+    T_LEFT   偏移，并进入状态 5
+
+    mixed_expression  转到状态 26
+    expression        转到状态 27
+
+
+状态 15
+
+    9 mixed_expression: mixed_expression T_MINUS • mixed_expression
+   18                 | mixed_expression T_MINUS • expression
+
+    T_INT    偏移，并进入状态 3
+    T_FLOAT  偏移，并进入状态 4
+    T_LEFT   偏移，并进入状态 5
+
+    mixed_expression  转到状态 28
+    expression        转到状态 29
+
+
+状态 16
+
+   10 mixed_expression: mixed_expression T_MULTIPLY • mixed_expression
+   19                 | mixed_expression T_MULTIPLY • expression
+
+    T_INT    偏移，并进入状态 3
+    T_FLOAT  偏移，并进入状态 4
+    T_LEFT   偏移，并进入状态 5
+
+    mixed_expression  转到状态 30
+    expression        转到状态 31
+
+
+状态 17
+
+   11 mixed_expression: mixed_expression T_DIVIDE • mixed_expression
+   20                 | mixed_expression T_DIVIDE • expression
+
+    T_INT    偏移，并进入状态 3
+    T_FLOAT  偏移，并进入状态 4
+    T_LEFT   偏移，并进入状态 5
+
+    mixed_expression  转到状态 32
+    expression        转到状态 33
+
+
+状态 18
+
+    4 line: mixed_expression T_NEWLINE •
+
+    $default  使用规则 4 以归约 (line)
+
+
+状态 19
+
+   13 mixed_expression: expression T_PLUS • mixed_expression
+   23 expression: expression T_PLUS • expression
+
+    T_INT    偏移，并进入状态 3
+    T_FLOAT  偏移，并进入状态 4
+    T_LEFT   偏移，并进入状态 5
+
+    mixed_expression  转到状态 34
+    expression        转到状态 35
+
+
+状态 20
+
+   14 mixed_expression: expression T_MINUS • mixed_expression
+   24 expression: expression T_MINUS • expression
+
+    T_INT    偏移，并进入状态 3
+    T_FLOAT  偏移，并进入状态 4
+    T_LEFT   偏移，并进入状态 5
+
+    mixed_expression  转到状态 36
+    expression        转到状态 37
+
+
+状态 21
+
+   15 mixed_expression: expression T_MULTIPLY • mixed_expression
+   25 expression: expression T_MULTIPLY • expression
+
+    T_INT    偏移，并进入状态 3
+    T_FLOAT  偏移，并进入状态 4
+    T_LEFT   偏移，并进入状态 5
+
+    mixed_expression  转到状态 38
+    expression        转到状态 39
+
+
+状态 22
+
+   16 mixed_expression: expression T_DIVIDE • mixed_expression
+   21                 | expression T_DIVIDE • expression
+
+    T_INT    偏移，并进入状态 3
+    T_FLOAT  偏移，并进入状态 4
+    T_LEFT   偏移，并进入状态 5
+
+    mixed_expression  转到状态 40
+    expression        转到状态 41
+
+
+状态 23
+
+    5 line: expression T_NEWLINE •
+
+    $default  使用规则 5 以归约 (line)
+
+
+状态 24
+
+   12 mixed_expression: T_LEFT mixed_expression T_RIGHT •
+
+    $default  使用规则 12 以归约 (mixed_expression)
+
+
+状态 25
+
+   26 expression: T_LEFT expression T_RIGHT •
+
+    $default  使用规则 26 以归约 (expression)
+
+
+状态 26
+
+    8 mixed_expression: mixed_expression • T_PLUS mixed_expression
+    8                 | mixed_expression T_PLUS mixed_expression •
+    9                 | mixed_expression • T_MINUS mixed_expression
+   10                 | mixed_expression • T_MULTIPLY mixed_expression
+   11                 | mixed_expression • T_DIVIDE mixed_expression
+   17                 | mixed_expression • T_PLUS expression
+   18                 | mixed_expression • T_MINUS expression
+   19                 | mixed_expression • T_MULTIPLY expression
+   20                 | mixed_expression • T_DIVIDE expression
+
+    T_MULTIPLY  偏移，并进入状态 16
+    T_DIVIDE    偏移，并进入状态 17
+
+    $default  使用规则 8 以归约 (mixed_expression)
+
+
+状态 27
+
+   13 mixed_expression: expression • T_PLUS mixed_expression
+   14                 | expression • T_MINUS mixed_expression
+   15                 | expression • T_MULTIPLY mixed_expression
+   16                 | expression • T_DIVIDE mixed_expression
+   17                 | mixed_expression T_PLUS expression •
+   21                 | expression • T_DIVIDE expression
+   23 expression: expression • T_PLUS expression
+   24           | expression • T_MINUS expression
+   25           | expression • T_MULTIPLY expression
+
+    T_MULTIPLY  偏移，并进入状态 21
+    T_DIVIDE    偏移，并进入状态 22
+
+    $default  使用规则 17 以归约 (mixed_expression)
+
+
+状态 28
+
+    8 mixed_expression: mixed_expression • T_PLUS mixed_expression
+    9                 | mixed_expression • T_MINUS mixed_expression
+    9                 | mixed_expression T_MINUS mixed_expression •
+   10                 | mixed_expression • T_MULTIPLY mixed_expression
+   11                 | mixed_expression • T_DIVIDE mixed_expression
+   17                 | mixed_expression • T_PLUS expression
+   18                 | mixed_expression • T_MINUS expression
+   19                 | mixed_expression • T_MULTIPLY expression
+   20                 | mixed_expression • T_DIVIDE expression
+
+    T_MULTIPLY  偏移，并进入状态 16
+    T_DIVIDE    偏移，并进入状态 17
+
+    $default  使用规则 9 以归约 (mixed_expression)
+
+
+状态 29
+
+   13 mixed_expression: expression • T_PLUS mixed_expression
+   14                 | expression • T_MINUS mixed_expression
+   15                 | expression • T_MULTIPLY mixed_expression
+   16                 | expression • T_DIVIDE mixed_expression
+   18                 | mixed_expression T_MINUS expression •
+   21                 | expression • T_DIVIDE expression
+   23 expression: expression • T_PLUS expression
+   24           | expression • T_MINUS expression
+   25           | expression • T_MULTIPLY expression
+
+    T_MULTIPLY  偏移，并进入状态 21
+    T_DIVIDE    偏移，并进入状态 22
+
+    $default  使用规则 18 以归约 (mixed_expression)
+
+
+状态 30
+
+    8 mixed_expression: mixed_expression • T_PLUS mixed_expression
+    9                 | mixed_expression • T_MINUS mixed_expression
+   10                 | mixed_expression • T_MULTIPLY mixed_expression
+   10                 | mixed_expression T_MULTIPLY mixed_expression •
+   11                 | mixed_expression • T_DIVIDE mixed_expression
+   17                 | mixed_expression • T_PLUS expression
+   18                 | mixed_expression • T_MINUS expression
+   19                 | mixed_expression • T_MULTIPLY expression
+   20                 | mixed_expression • T_DIVIDE expression
+
+    $default  使用规则 10 以归约 (mixed_expression)
+
+
+状态 31
+
+   13 mixed_expression: expression • T_PLUS mixed_expression
+   14                 | expression • T_MINUS mixed_expression
+   15                 | expression • T_MULTIPLY mixed_expression
+   16                 | expression • T_DIVIDE mixed_expression
+   19                 | mixed_expression T_MULTIPLY expression •
+   21                 | expression • T_DIVIDE expression
+   23 expression: expression • T_PLUS expression
+   24           | expression • T_MINUS expression
+   25           | expression • T_MULTIPLY expression
+
+    $default  使用规则 19 以归约 (mixed_expression)
+
+
+状态 32
+
+    8 mixed_expression: mixed_expression • T_PLUS mixed_expression
+    9                 | mixed_expression • T_MINUS mixed_expression
+   10                 | mixed_expression • T_MULTIPLY mixed_expression
+   11                 | mixed_expression • T_DIVIDE mixed_expression
+   11                 | mixed_expression T_DIVIDE mixed_expression •
+   17                 | mixed_expression • T_PLUS expression
+   18                 | mixed_expression • T_MINUS expression
+   19                 | mixed_expression • T_MULTIPLY expression
+   20                 | mixed_expression • T_DIVIDE expression
+
+    $default  使用规则 11 以归约 (mixed_expression)
+
+
+状态 33
+
+   13 mixed_expression: expression • T_PLUS mixed_expression
+   14                 | expression • T_MINUS mixed_expression
+   15                 | expression • T_MULTIPLY mixed_expression
+   16                 | expression • T_DIVIDE mixed_expression
+   20                 | mixed_expression T_DIVIDE expression •
+   21                 | expression • T_DIVIDE expression
+   23 expression: expression • T_PLUS expression
+   24           | expression • T_MINUS expression
+   25           | expression • T_MULTIPLY expression
+
+    $default  使用规则 20 以归约 (mixed_expression)
+
+
+状态 34
+
+    8 mixed_expression: mixed_expression • T_PLUS mixed_expression
+    9                 | mixed_expression • T_MINUS mixed_expression
+   10                 | mixed_expression • T_MULTIPLY mixed_expression
+   11                 | mixed_expression • T_DIVIDE mixed_expression
+   13                 | expression T_PLUS mixed_expression •
+   17                 | mixed_expression • T_PLUS expression
+   18                 | mixed_expression • T_MINUS expression
+   19                 | mixed_expression • T_MULTIPLY expression
+   20                 | mixed_expression • T_DIVIDE expression
+
+    T_MULTIPLY  偏移，并进入状态 16
+    T_DIVIDE    偏移，并进入状态 17
+
+    $default  使用规则 13 以归约 (mixed_expression)
+
+
+状态 35
+
+   13 mixed_expression: expression • T_PLUS mixed_expression
+   14                 | expression • T_MINUS mixed_expression
+   15                 | expression • T_MULTIPLY mixed_expression
+   16                 | expression • T_DIVIDE mixed_expression
+   21                 | expression • T_DIVIDE expression
+   23 expression: expression • T_PLUS expression
+   23           | expression T_PLUS expression •
+   24           | expression • T_MINUS expression
+   25           | expression • T_MULTIPLY expression
+
+    T_MULTIPLY  偏移，并进入状态 21
+    T_DIVIDE    偏移，并进入状态 22
+
+    $default  使用规则 23 以归约 (expression)
+
+
+状态 36
+
+    8 mixed_expression: mixed_expression • T_PLUS mixed_expression
+    9                 | mixed_expression • T_MINUS mixed_expression
+   10                 | mixed_expression • T_MULTIPLY mixed_expression
+   11                 | mixed_expression • T_DIVIDE mixed_expression
+   14                 | expression T_MINUS mixed_expression •
+   17                 | mixed_expression • T_PLUS expression
+   18                 | mixed_expression • T_MINUS expression
+   19                 | mixed_expression • T_MULTIPLY expression
+   20                 | mixed_expression • T_DIVIDE expression
+
+    T_MULTIPLY  偏移，并进入状态 16
+    T_DIVIDE    偏移，并进入状态 17
+
+    $default  使用规则 14 以归约 (mixed_expression)
+
+
+状态 37
+
+   13 mixed_expression: expression • T_PLUS mixed_expression
+   14                 | expression • T_MINUS mixed_expression
+   15                 | expression • T_MULTIPLY mixed_expression
+   16                 | expression • T_DIVIDE mixed_expression
+   21                 | expression • T_DIVIDE expression
+   23 expression: expression • T_PLUS expression
+   24           | expression • T_MINUS expression
+   24           | expression T_MINUS expression •
+   25           | expression • T_MULTIPLY expression
+
+    T_MULTIPLY  偏移，并进入状态 21
+    T_DIVIDE    偏移，并进入状态 22
+
+    $default  使用规则 24 以归约 (expression)
+
+
+状态 38
+
+    8 mixed_expression: mixed_expression • T_PLUS mixed_expression
+    9                 | mixed_expression • T_MINUS mixed_expression
+   10                 | mixed_expression • T_MULTIPLY mixed_expression
+   11                 | mixed_expression • T_DIVIDE mixed_expression
+   15                 | expression T_MULTIPLY mixed_expression •
+   17                 | mixed_expression • T_PLUS expression
+   18                 | mixed_expression • T_MINUS expression
+   19                 | mixed_expression • T_MULTIPLY expression
+   20                 | mixed_expression • T_DIVIDE expression
+
+    $default  使用规则 15 以归约 (mixed_expression)
+
+
+状态 39
+
+   13 mixed_expression: expression • T_PLUS mixed_expression
+   14                 | expression • T_MINUS mixed_expression
+   15                 | expression • T_MULTIPLY mixed_expression
+   16                 | expression • T_DIVIDE mixed_expression
+   21                 | expression • T_DIVIDE expression
+   23 expression: expression • T_PLUS expression
+   24           | expression • T_MINUS expression
+   25           | expression • T_MULTIPLY expression
+   25           | expression T_MULTIPLY expression •
+
+    $default  使用规则 25 以归约 (expression)
+
+
+状态 40
+
+    8 mixed_expression: mixed_expression • T_PLUS mixed_expression
+    9                 | mixed_expression • T_MINUS mixed_expression
+   10                 | mixed_expression • T_MULTIPLY mixed_expression
+   11                 | mixed_expression • T_DIVIDE mixed_expression
+   16                 | expression T_DIVIDE mixed_expression •
+   17                 | mixed_expression • T_PLUS expression
+   18                 | mixed_expression • T_MINUS expression
+   19                 | mixed_expression • T_MULTIPLY expression
+   20                 | mixed_expression • T_DIVIDE expression
+
+    $default  使用规则 16 以归约 (mixed_expression)
+
+
+状态 41
+
+   13 mixed_expression: expression • T_PLUS mixed_expression
+   14                 | expression • T_MINUS mixed_expression
+   15                 | expression • T_MULTIPLY mixed_expression
+   16                 | expression • T_DIVIDE mixed_expression
+   21                 | expression • T_DIVIDE expression
+   21                 | expression T_DIVIDE expression •
+   23 expression: expression • T_PLUS expression
+   24           | expression • T_MINUS expression
+   25           | expression • T_MULTIPLY expression
+
+    $default  使用规则 21 以归约 (mixed_expression)
