@@ -1,0 +1,6 @@
+.PHONY:	a
+all: a
+a: 
+	flex -+ lexer.l
+	g++ lex.yy.cc -o lcc.out
+	./lcc.out test01.cpp
