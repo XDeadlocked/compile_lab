@@ -1,0 +1,13 @@
+digraph MDFA {
+	graph [rankdir=LR]
+	node [shape=circle]
+	A [label=A]
+	B [label=B]
+	C [label=C]
+	A -> B [label=a]
+	A -> C [label=b]
+	B -> B [label=a]
+	B -> C [label=b]
+	C -> B [label=a]
+	C -> C [label=b]
+}
